@@ -16,7 +16,7 @@ PrefabInstance:
     - target: {fileID: 2400879079064471977, guid: d151d388b193b884ea82679c67d78341,
         type: 3}
       propertyPath: m_Name
-      value: Room7
+      value: RoomBTL
       objectReference: {fileID: 0}
     - target: {fileID: 2981651603493276322, guid: d151d388b193b884ea82679c67d78341,
         type: 3}
@@ -94,7 +94,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6874514414499471007, guid: d151d388b193b884ea82679c67d78341, type: 3}
+    - {fileID: 5948166074634338315, guid: d151d388b193b884ea82679c67d78341, type: 3}
+    - {fileID: 3726097446718993908, guid: d151d388b193b884ea82679c67d78341, type: 3}
+    - {fileID: 2981651603493276322, guid: d151d388b193b884ea82679c67d78341, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d151d388b193b884ea82679c67d78341, type: 3}
