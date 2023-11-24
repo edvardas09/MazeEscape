@@ -5,35 +5,26 @@ public class Room : MonoBehaviour
 {
     [Header("Setup")]
     [SerializeField] private List<RoomEntrance> roomEntrances = new();
-    [SerializeField] private RoomType roomType;
 
     [Header("Prefabs")]
     [SerializeField] private GameObject startPrefab;
     [SerializeField] private GameObject endPrefab;
 
     public List<RoomEntrance> RoomEntrances => roomEntrances;
+    public RoomInfo RoomInfo => roomInfo;
+
+    private RoomInfo roomInfo = new();
 
     private void OnValidate()
     {
-        if (roomEntrances.Count == 0)
-        {
-            roomEntrances = new List<RoomEntrance>(GetComponentsInChildren<RoomEntrance>());
-        }
-
-        if (roomType == RoomType.Start && startPrefab == null)
-        {
-            Debug.LogError("Start prefab is not set", this);
-        }
-
-        if (roomType == RoomType.End && endPrefab == null)
-        {
-            Debug.LogError("End prefab is not set", this);
-        }
+        roomEntrances = new List<RoomEntrance>(GetComponentsInChildren<RoomEntrance>());
     }
 
-    private void Awake()
+    public void Setup(RoomInfo roomInfo)
     {
-        switch (roomType)
+        this.roomInfo = roomInfo;
+
+        switch (roomInfo.RoomType)
         {
             case RoomType.Start:
                 SpawnStartRoom();
@@ -46,25 +37,13 @@ public class Room : MonoBehaviour
         }
     }
 
-    public void SpawnStartRoom()
+    private void SpawnStartRoom()
     {
-        if (roomType != RoomType.Start)
-        {
-            Debug.LogError("Room is not a start room", this);
-            return;
-        }
-
         Instantiate(startPrefab, transform);
     }
 
-    public void SpawnEndRoom()
+    private void SpawnEndRoom()
     {
-        if (roomType != RoomType.End)
-        {
-            Debug.LogError("Room is not an end room", this);
-            return;
-        }
-
         Instantiate(endPrefab, transform);
     }
 }

@@ -309,9 +309,70 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1180995555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1180995557}
+  - component: {fileID: 1180995556}
+  m_Layer: 0
+  m_Name: MazeGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1180995556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180995555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16952f915efd28944b62ec1b5f6a0465, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefabs:
+  - {fileID: 5881322879684049819, guid: 6165cadf30fefaa479d8eb0fceb9cde9, type: 3}
+  - {fileID: 5881322879684049819, guid: 97482925af59e1b41b0f790120e95f3a, type: 3}
+  - {fileID: 5881322879684049819, guid: 2ebf66ec96ef1c741a456bae84818147, type: 3}
+  - {fileID: 5881322879684049819, guid: eb5d8f3d0d4f3f0428cb7725abb18960, type: 3}
+  - {fileID: 5881322879684049819, guid: ca5b147af845533419ebc9a6f6ccf2ee, type: 3}
+  - {fileID: 5881322879684049819, guid: 098f464c633655a468dfa8bad6ea7fcc, type: 3}
+  - {fileID: 5881322879684049819, guid: 5c5994caf55b3e54292425ef1277c71d, type: 3}
+  - {fileID: 5881322879684049819, guid: 7403800376a0e1c4d9a388f2ddd96fad, type: 3}
+  - {fileID: 5881322879684049819, guid: ae3a72f365dd9f34f81a72421be0381e, type: 3}
+  - {fileID: 5881322879684049819, guid: 3ceb5b94d8001ea489408a4c326a71c5, type: 3}
+  - {fileID: 5881322879684049819, guid: 23ca6a166c02e454ab10b4178f1d2bc9, type: 3}
+  - {fileID: 5881322879684049819, guid: 47d0fdfdf64401344ad2b09bec5093d9, type: 3}
+  - {fileID: 5881322879684049819, guid: f4596d858b941f54f95c8a6a598267aa, type: 3}
+  - {fileID: 5881322879684049819, guid: 64f2fbf66e4ca7d45b984740b1724169, type: 3}
+  mazeLength: 5
+--- !u!4 &1180995557
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180995555}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.197806, y: 5.443232, z: -0.3998164}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 963194228}
   - {fileID: 705507995}
+  - {fileID: 1180995557}
