@@ -13,6 +13,11 @@ namespace MazeEscape.Maze
 
         [SerializeField] private List<Cell> m_cells = new();
 
+        public List<Cell> GetCells()
+        {
+            return m_cells;
+        }
+
         public override void OnDrawGizmos()
         {
             if (m_cells.Count == 0)
@@ -38,21 +43,21 @@ namespace MazeEscape.Maze
 
             for (int i = 1; i < m_cellCount; i++)
             {
-                var newCell = GetNewCell();
-
-                //TODO: continue generation from different cell
-                if (newCell == null)
+                var cellIndex = i - 1;
+                Cell newCell = null;
+                while (newCell == null)
                 {
-                    break;
+                    newCell = GetNewCell(m_cells[cellIndex]);
+                    cellIndex--;
                 }
 
                 m_cells.Add(newCell);
             }
         }
 
-        private Cell GetNewCell()
+        private Cell GetNewCell(Cell lastCell)
         {
-            var availableDirections = GetAvailableDirections(m_cells.Last().Coords);
+            var availableDirections = GetAvailableDirections(lastCell.Coords);
             if (availableDirections.Count == 0)
             {
                 return null;
@@ -62,7 +67,7 @@ namespace MazeEscape.Maze
 
             var newCell = new Cell
             {
-                Coords = m_cells.Last().Coords + randomDirection.GetVector()
+                Coords = lastCell.Coords + randomDirection.GetVector()
             };
 
             return newCell;
@@ -85,11 +90,6 @@ namespace MazeEscape.Maze
             }
 
             return availableDirections;
-        }
-
-        public List<Cell> GetCells()
-        {
-            return m_cells;
         }
     }
 }
