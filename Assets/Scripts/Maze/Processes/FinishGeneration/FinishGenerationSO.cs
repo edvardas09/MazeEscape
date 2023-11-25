@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace MazeEscape.Maze
@@ -7,6 +9,10 @@ namespace MazeEscape.Maze
     {
         [SerializeField] private Cell m_finishCell;
 
+        private List<Cell> m_remainingCells = new List<Cell>();
+        private List<Cell> m_currentIterationCells = new List<Cell>();
+        private List<Passage> m_passages = new List<Passage>();
+
         public Cell GetFinishCell()
         {
             return m_finishCell;
@@ -14,36 +20,66 @@ namespace MazeEscape.Maze
 
         public override void OnDrawGizmos()
         {
-            if (m_finishCell == null)
+            Gizmos.color = Color.blue;
+            foreach (var cell in m_currentIterationCells)
             {
-                return;
+                Gizmos.DrawWireCube(new Vector3(cell.Coords.x, 0, cell.Coords.y), new Vector3(.5f, .5f, .5f));
             }
-
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(new Vector3(m_finishCell.Coords.x, 0, m_finishCell.Coords.y), new Vector3(1, 1, 1));
         }
 
         protected override void OnGenerate()
         {
+            m_currentIterationCells.Clear();
+            m_remainingCells.Clear();
+
             var cellGeneration = GetProcess<ICellGeneration>();
             var cells = cellGeneration.GetCells();
+            m_remainingCells.AddRange(cells);
 
-            var startGeneration = GetProcess<IStartCell>();
-            var startCell = startGeneration.GetStartCell();
+            var passageGeneration = GetProcess<IEntranceGeneration>();
+            m_passages = passageGeneration.GetPassages();
 
-            var furthestCell = startCell;
-            var furthestDistance = 0f;
-            foreach (var cell in cells)
+            var startCell = GetProcess<IStartCell>().GetStartCell();
+            m_currentIterationCells.Add(startCell);
+
+            var iterationCount = cells.Count;
+            while (iterationCount > 0)
             {
-                var distance = Vector2Int.Distance(startCell.Coords, cell.Coords);
-                if (distance > furthestDistance)
+                iterationCount--;
+                var tempCells = Iterate();
+                if (tempCells.Count == 0)
                 {
-                    furthestCell = cell;
-                    furthestDistance = distance;
+                    break;
                 }
+
+                m_currentIterationCells = tempCells;
             }
 
-            m_finishCell = furthestCell;
+            m_finishCell = m_currentIterationCells[Random.Range(0, m_currentIterationCells.Count)];
+        }
+
+        public List<Cell> Iterate()
+        {
+            var newCells = new List<Cell>();
+
+            for (int i = 0; i < m_currentIterationCells.Count; i++)
+            {
+                var cell = m_currentIterationCells[i];
+                m_remainingCells.Remove(cell);
+
+                var availablePassages = m_passages.Where(p => p.EntranceCell == cell).ToList();
+                if (availablePassages.Count == 0)
+                {
+                    continue;
+                }
+
+                availablePassages = availablePassages.Where(x => m_remainingCells.Contains(x.ExitCell)).ToList();
+                availablePassages = availablePassages.Where(x => !newCells.Contains(x.ExitCell)).ToList();
+
+                newCells.AddRange(availablePassages.Select(x => x.ExitCell).ToList());
+            }
+
+            return newCells;
         }
     }
 }
