@@ -1,4 +1,7 @@
-public interface IStartCell
+namespace MazeEscape.Maze
 {
-    public Cell GetStartCell();
+    public interface IStartCell
+    {
+        public Cell GetStartCell();
+    }
 }

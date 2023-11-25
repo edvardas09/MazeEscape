@@ -1,4 +1,7 @@
-public interface IFinishCell
+namespace MazeEscape.Maze
 {
-    public Cell GetFinishCell();
+    public interface IFinishCell
+    {
+        public Cell GetFinishCell();
+    }
 }

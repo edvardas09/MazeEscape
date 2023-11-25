@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 
-public interface ICellGeneration
+namespace MazeEscape.Maze
 {
-    public List<Cell> GetCells();
+    public interface ICellGeneration
+    {
+        public List<Cell> GetCells();
+    }
 }

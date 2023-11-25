@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 
-public interface IEntranceGeneration
+namespace MazeEscape.Maze
 {
-    public List<Passage> GetPassages();
+    public interface IEntranceGeneration
+    {
+        public List<Passage> GetPassages();
+    }
 }
