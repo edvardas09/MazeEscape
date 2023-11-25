@@ -1,3 +1,4 @@
+using MazeEscape.Room;
 using UnityEngine;
 
 public class RoomEntrance : MonoBehaviour
@@ -6,28 +7,15 @@ public class RoomEntrance : MonoBehaviour
 
     public RoomEntranceDirection RoomEntranceDirection => roomEntranceDirection;
 
-    private void OnValidate()
-    {
-        if (roomEntranceDirection == RoomEntranceDirection.None)
-        {
-            Debug.LogError("RoomEntranceDirection is not set", this);
-        }
-    }
-
     public bool IsEntranceBetweenRooms(RoomEntranceDirection roomEntranceDirection)
     {
-        switch (roomEntranceDirection)
+        return roomEntranceDirection switch
         {
-            case RoomEntranceDirection.Top:
-                return this.roomEntranceDirection == RoomEntranceDirection.Bottom;
-            case RoomEntranceDirection.Right:
-                return this.roomEntranceDirection == RoomEntranceDirection.Left;
-            case RoomEntranceDirection.Bottom:
-                return this.roomEntranceDirection == RoomEntranceDirection.Top;
-            case RoomEntranceDirection.Left:
-                return this.roomEntranceDirection == RoomEntranceDirection.Right;
-            default:
-                return false;
-        }
+            RoomEntranceDirection.Top => this.roomEntranceDirection == RoomEntranceDirection.Bottom,
+            RoomEntranceDirection.Right => this.roomEntranceDirection == RoomEntranceDirection.Left,
+            RoomEntranceDirection.Bottom => this.roomEntranceDirection == RoomEntranceDirection.Top,
+            RoomEntranceDirection.Left => this.roomEntranceDirection == RoomEntranceDirection.Right,
+            _ => false,
+        };
     }
 }
