@@ -1,3 +1,4 @@
+using MazeEscape.Room;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -38,47 +39,23 @@ namespace MazeEscape.Maze
 
             foreach (var cell in cells)
             {
-                var topCell = GetCell(cells, cell.Coords + Vector2Int.up);
-                if (topCell != null)
+                AddEntranceToCoords(cells, cell, RoomEntranceDirection.Top);
+                AddEntranceToCoords(cells, cell, RoomEntranceDirection.Right);
+                AddEntranceToCoords(cells, cell, RoomEntranceDirection.Bottom);
+                AddEntranceToCoords(cells, cell, RoomEntranceDirection.Left);
+            }
+        }
+
+        private void AddEntranceToCoords(List<Cell> cells, Cell cell, RoomEntranceDirection roomEntranceDirection)
+        {
+            var neighbourCell = GetCell(cells, cell.Coords + roomEntranceDirection.GetVector());
+            if (neighbourCell != null)
+            {
+                m_passages.Add(new Passage
                 {
-                    m_passages.Add(new Passage
-                    {
-                        EntranceCell = cell,
-                        ExitCell = topCell
-                    });
-                }
-
-                var rightCell = GetCell(cells, cell.Coords + Vector2Int.right);
-                if (rightCell != null)
-                {
-                    m_passages.Add(new Passage
-                    {
-                        EntranceCell = cell,
-                        ExitCell = rightCell
-                    });
-                }
-
-                var bottomCell = GetCell(cells, cell.Coords + Vector2Int.down);
-                if (bottomCell != null)
-                {
-                    m_passages.Add(new Passage
-                    {
-                        EntranceCell = cell,
-                        ExitCell = bottomCell
-                    });
-                }
-
-                var leftCell = GetCell(cells, cell.Coords + Vector2Int.left);
-                if (leftCell != null)
-                {
-                    m_passages.Add(new Passage
-                    {
-                        EntranceCell = cell,
-                        ExitCell = leftCell
-                    });
-                }
-
-
+                    EntranceCell = cell,
+                    ExitCell = neighbourCell
+                });
             }
         }
 
