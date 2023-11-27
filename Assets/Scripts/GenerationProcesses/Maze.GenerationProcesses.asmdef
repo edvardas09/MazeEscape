@@ -1,0 +1,17 @@
+{
+    "name": "Maze.GenerationProcesses",
+    "rootNamespace": "",
+    "references": [
+        "GUID:91b90a9be04925c42bae95251589fe1f",
+        "GUID:563d388a2cf51a64389a81eafc457d12"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
