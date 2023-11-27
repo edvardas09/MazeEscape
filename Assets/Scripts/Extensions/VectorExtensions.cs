@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MazeEscape.MazeGenerator
+namespace MazeEscape.Extensions
 {
     public static class VectorExtensions
     {

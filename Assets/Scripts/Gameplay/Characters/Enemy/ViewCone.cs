@@ -1,4 +1,3 @@
-using MazeEscape.MazeGenerator;
 using UnityEngine;
 using UnityEngine.Events;
 

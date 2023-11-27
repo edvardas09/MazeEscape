@@ -10,10 +10,13 @@ namespace MazeEscape.Gameplay.Characters
 
         [SerializeField] private int m_maxHealth = 100;
 
+        private readonly PlayerHealthChangedSignal m_playerHealthChangedSignal;
+
         private int m_currentHealth;
 
-        private void Awake()
+        public Player(PlayerHealthChangedSignal playerHealthChangedSignal)
         {
+            m_playerHealthChangedSignal = playerHealthChangedSignal;
             m_currentHealth = m_maxHealth;
         }
 
