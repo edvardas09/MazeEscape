@@ -9,7 +9,7 @@ namespace MazeEscape.GenerationProcesses
     public class EnemyGenerationSO : GenerationProcessSO
     {
         [SerializeField] private GameObject m_enemyPrefab;
-        [SerializeField] private int m_enemyCount = 2;
+        [SerializeField, Range(0, 10)] private int m_enemyCount = 2;
 
         private GameObject m_enemy;
 

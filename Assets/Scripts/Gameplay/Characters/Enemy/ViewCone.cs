@@ -1,10 +1,14 @@
 using MazeEscape.MazeGenerator;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace MazeEscape.Gameplay.Characters
 {
     public class ViewCone : MonoBehaviour
     {
+        public UnityAction<GameObject> OnPlayerFound;
+        public UnityAction<GameObject> OnPlayerLost;
+
         private const string playerTag = "Player";
         private const string defaultTag = "Default";
         private const string playerLayer = "Player";
@@ -19,6 +23,8 @@ namespace MazeEscape.Gameplay.Characters
 
         private Mesh m_mesh;
         private int m_layerMask;
+
+        private GameObject m_playerObject;
 
         private void Start()
         {
@@ -45,6 +51,7 @@ namespace MazeEscape.Gameplay.Characters
             var vertices = new Vector3[360 * 3];
             var triangles = new int[360 * 3];
             var triangleCount = 0;
+            GameObject playerObject = null;
 
             var currentWorldRotation = m_enemyTransform.rotation.eulerAngles.y + 90;
             currentWorldRotation = currentWorldRotation > 360 ? currentWorldRotation - 360 : currentWorldRotation;
@@ -66,9 +73,17 @@ namespace MazeEscape.Gameplay.Characters
                 var hit = Physics.Raycast(transform.position, new Vector3(x, 0, z), out var hitInfo, m_distance, m_layerMask);
 
                 float damageDistanceByRaycast;
-                if (hit && !hitInfo.collider.CompareTag(playerTag))
+                if (hit)
                 {
-                    damageDistanceByRaycast = Vector3.Distance(transform.position, hitInfo.point);
+                    if (!hitInfo.collider.CompareTag(playerTag))
+                    {
+                        damageDistanceByRaycast = Vector3.Distance(transform.position, hitInfo.point);
+                    }
+                    else
+                    {
+                        playerObject = hitInfo.collider.gameObject;
+                        damageDistanceByRaycast = (int)m_distance;
+                    }
                 }
                 else
                 {
@@ -96,6 +111,23 @@ namespace MazeEscape.Gameplay.Characters
             m_meshFilter.mesh = m_mesh;
 
             transform.rotation = Quaternion.identity;
+
+            if (playerObject == m_playerObject)
+            {
+                return;
+            }
+
+            m_playerObject = playerObject;
+
+            if (m_playerObject != null)
+            {
+                OnPlayerFound?.Invoke(m_playerObject);
+            }
+            else
+            {
+                OnPlayerLost?.Invoke(m_playerObject);
+            }
+
         }
     }
 }
