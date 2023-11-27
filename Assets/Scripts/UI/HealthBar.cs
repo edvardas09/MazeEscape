@@ -4,11 +4,11 @@ using UnityEngine.UI;
 
 namespace MazeEsacpe.UI
 {
-    public class HealthBar : MonoBehaviour
+    public class HealthBar : CanvasBase
     {
         [SerializeField] private Image m_healthBarFill;
 
-        private void Start()
+        public override void Initialize()
         {
             var player = FindObjectOfType<Player>();
             player.OnHealthChanged += UpdateHealthBar;

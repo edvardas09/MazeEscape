@@ -200,6 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 293a969c64980b1468e5bf66fea7dc1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_isVisibleOnAwake: 1
   m_healthBarFill: {fileID: 4075020744210734833}
 --- !u!1 &6026298079385422038
 GameObject:

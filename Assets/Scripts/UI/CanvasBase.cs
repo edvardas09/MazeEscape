@@ -8,6 +8,8 @@ namespace MazeEsacpe.UI
 
         protected CanvasGroup m_canvasGroup;
 
+        public abstract void Initialize();
+
         protected virtual void Awake()
         {
             m_canvasGroup = GetComponent<CanvasGroup>();

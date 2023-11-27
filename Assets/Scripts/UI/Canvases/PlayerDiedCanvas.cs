@@ -1,17 +1,17 @@
-using MazeEscape.Gameplay;
+using MazeEscape.Gameplay.Characters;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace MazeEsacpe.UI
 {
-    public class GameEndCanvas : CanvasBase
+    public class PlayerDiedCanvas : CanvasBase
     {
-        [SerializeField] private Button m_nextLevelButton;
+        [SerializeField] private Button m_retryButton;
 
         protected override void Awake()
         {
-            m_nextLevelButton.onClick.AddListener(OnNextLevelButtonClicked);
+            m_retryButton.onClick.AddListener(OnRetryButtonClicked);
 
             base.Awake();
         }
@@ -25,11 +25,11 @@ namespace MazeEsacpe.UI
 
         public override void Initialize()
         {
-            var gameEndObject = FindObjectOfType<GameEndObject>();
-            gameEndObject.OnGameEnd += Show;
+            var player = FindObjectOfType<Player>();
+            player.OnPlayerDied += Show;
         }
 
-        private void OnNextLevelButtonClicked()
+        private void OnRetryButtonClicked()
         {
             Time.timeScale = 1;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);

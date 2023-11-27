@@ -6,6 +6,7 @@ namespace MazeEscape.Gameplay.Characters
     public class Player : Character
     {
         public UnityAction<int, int> OnHealthChanged;
+        public UnityAction OnPlayerDied;
 
         [SerializeField] private int m_maxHealth = 100;
 
@@ -30,6 +31,7 @@ namespace MazeEscape.Gameplay.Characters
         private void Die()
         {
             Debug.Log("Player died");
+            OnPlayerDied?.Invoke();
         }
     }
 }

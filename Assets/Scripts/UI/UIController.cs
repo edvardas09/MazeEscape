@@ -13,16 +13,26 @@ namespace MazeEsacpe.UI
             m_canvasBases = FindObjectsOfType<CanvasBase>(true).ToList();
         }
 
-        public void ShowCanvas<T>() where T : CanvasBase
+        private void Start()
+        {
+            foreach (var canvasBase in m_canvasBases)
+            {
+                canvasBase.Initialize();
+            }
+        }
+
+        public T ShowCanvas<T>() where T : CanvasBase
         {
             var canvasBase = m_canvasBases.Find(x => x is T);
             canvasBase.Show();
+            return canvasBase as T;
         }
 
-        public void HideCanvas<T>() where T : CanvasBase
+        public T HideCanvas<T>() where T : CanvasBase
         {
             var canvasBase = m_canvasBases.Find(x => x is T);
             canvasBase.Hide();
+            return canvasBase as T;
         }
     }
 }
