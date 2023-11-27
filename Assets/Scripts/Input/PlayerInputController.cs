@@ -1,6 +1,6 @@
+using MazeEscape.Gameplay.Characters;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using MazeEscape.Gameplay.Character;
 
 namespace MazeEscape.Input
 {

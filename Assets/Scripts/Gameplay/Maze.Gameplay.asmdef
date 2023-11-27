@@ -1,0 +1,16 @@
+{
+    "name": "Maze.Gameplay",
+    "rootNamespace": "",
+    "references": [
+        "GUID:91b90a9be04925c42bae95251589fe1f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
