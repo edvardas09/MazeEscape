@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace MazeEscape.Gameplay.Characters
 {
     public class Player : Character
     {
+        public UnityAction<int, int> OnHealthChanged;
+
         [SerializeField] private int m_maxHealth = 100;
 
         private int m_currentHealth;
@@ -16,6 +19,8 @@ namespace MazeEscape.Gameplay.Characters
         public void TakeDamage(int damage)
         {
             m_currentHealth -= damage;
+            OnHealthChanged?.Invoke(m_maxHealth, m_currentHealth);
+
             if (m_currentHealth <= 0)
             {
                 Die();
