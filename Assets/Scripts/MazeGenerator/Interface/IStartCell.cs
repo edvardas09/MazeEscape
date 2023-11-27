@@ -1,4 +1,4 @@
-namespace MazeEscape.Maze
+namespace MazeEscape.MazeGenerator
 {
     public interface IStartCell
     {

@@ -1,4 +1,4 @@
-namespace MazeEscape.Room
+namespace MazeEscape.MazeGenerator.Room
 {
     public enum RoomEntranceDirection
     {

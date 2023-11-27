@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace MazeEscape.Maze
+namespace MazeEscape.MazeGenerator
 {
     public interface IEntranceGeneration
     {

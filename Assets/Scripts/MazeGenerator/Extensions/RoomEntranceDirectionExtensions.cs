@@ -1,6 +1,7 @@
+using MazeEscape.MazeGenerator.Room;
 using UnityEngine;
 
-namespace MazeEscape.Room
+namespace MazeEscape.MazeGenerator
 {
     public static class RoomEntranceDirectionExtensions
     {
