@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57a562ee02259e7478a8cbc6d589413c, type: 3}
-  m_Name: CellGeneration
+  m_Script: {fileID: 11500000, guid: ea33257709ee5d845831c2abdded80e3, type: 3}
+  m_Name: FinishVisualGeneration
   m_EditorClassIdentifier: 
-  m_cellCount: 2
-  m_cells:
-  - Coords: {x: 0, y: 0}
-  - Coords: {x: 1, y: 0}
+  m_finishPrefab: {fileID: 2739465531519172325, guid: 6b0a48c65d81fe749853491cb28565e3,
+    type: 3}

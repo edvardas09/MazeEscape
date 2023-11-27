@@ -45,7 +45,6 @@ namespace MazeEscape.Input
             var movementVector = GetMovementVector();
             movementVector = Quaternion.Euler(0, 0, 45) * movementVector;
 
-
             m_movement.Move(movementVector);
         }
 
