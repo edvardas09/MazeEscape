@@ -7,7 +7,7 @@ namespace MazeEscape.GenerationProcesses
     [CreateAssetMenu(fileName = "CellGenerationFromImage", menuName = "Maze/Generation/CellGenerationFromImage")]
     public class CellGenerationFromImageSO : GenerationProcessSO, ICellGeneration
     {
-        [SerializeField] private Sprite sprite;
+        [SerializeField] private Sprite m_sprite;
         [SerializeField] private List<Cell> m_cells = new();
 
         public override void OnDrawGizmos()
@@ -29,7 +29,7 @@ namespace MazeEscape.GenerationProcesses
         {
             m_cells = new();
 
-            var texture = sprite.texture;
+            var texture = m_sprite.texture;
             var pixels = texture.GetPixels();
             var width = texture.width;
 

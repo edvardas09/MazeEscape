@@ -8,8 +8,8 @@ namespace MazeEscape.GenerationProcesses
     [CreateAssetMenu(fileName = "SquareMazeGeneration", menuName = "Maze/Generation/SquareMazeGeneration")]
     public class SquareMazeGeneration : GenerationProcessSO, ICellGeneration
     {
-        [SerializeField, Range(2, 10)] private int width = 10;
-        [SerializeField, Range(2, 10)] private int height = 10;
+        [SerializeField, Range(2, 10)] private int m_width = 10;
+        [SerializeField, Range(2, 10)] private int m_height = 10;
 
         [SerializeField] private List<Cell> m_cells = new();
 
@@ -37,9 +37,9 @@ namespace MazeEscape.GenerationProcesses
         {
             m_cells = new();
 
-            for (int x = 0; x < width; x++)
+            for (int x = 0; x < m_width; x++)
             {
-                for (int y = 0; y < height; y++)
+                for (int y = 0; y < m_height; y++)
                 {
                     var cell = new Cell
                     {

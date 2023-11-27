@@ -8,16 +8,16 @@ namespace MazeEscape.MazeGenerator
     [CreateAssetMenu(fileName = "DevelopmentProcess", menuName = "Maze/Generation/DevelopmentProcess")]
     public class DevelopmentProcessSO : GenerationProcessSO
     {
-        [SerializeField] private List<Cell> remainingCells = new();
-        [SerializeField] private List<Cell> currentIterationCells = new();
+        [SerializeField] private List<Cell> m_remainingCells = new();
+        [SerializeField] private List<Cell> m_currentIterationCells = new();
 
-        private List<Passage> passages = new();
+        private List<Passage> m_passages = new();
 
         public override void OnDrawGizmos()
         {
             Gizmos.color = Color.blue;
 
-            foreach (var cell in currentIterationCells)
+            foreach (var cell in m_currentIterationCells)
             {
                 Gizmos.DrawWireCube(new Vector3(cell.Coords.x, 0, cell.Coords.y), new Vector3(.5f, .5f, .5f));
             }
@@ -25,8 +25,8 @@ namespace MazeEscape.MazeGenerator
 
         protected override bool OnGenerate()
         {
-            currentIterationCells.Clear();
-            remainingCells.Clear();
+            m_currentIterationCells.Clear();
+            m_remainingCells.Clear();
 
             if (!TryGetProcess<ICellGeneration>(out var cellGeneration))
             {
@@ -47,12 +47,12 @@ namespace MazeEscape.MazeGenerator
             }
 
             var cells = cellGeneration.GetCells();
-            remainingCells.AddRange(cells);
+            m_remainingCells.AddRange(cells);
 
-            passages = passageGeneration.GetPassages();
+            m_passages = passageGeneration.GetPassages();
 
             var startCell = startCellGeneration.GetStartCell();
-            currentIterationCells.Add(startCell);
+            m_currentIterationCells.Add(startCell);
 
             var iterationCount = cells.Count;
             while (iterationCount > 0)
@@ -64,7 +64,7 @@ namespace MazeEscape.MazeGenerator
                     break;
                 }
 
-                currentIterationCells = tempCells;
+                m_currentIterationCells = tempCells;
             }
 
             return true;
@@ -73,24 +73,24 @@ namespace MazeEscape.MazeGenerator
         [ContextMenu("TestIterate")]
         private void TestIterate()
         {
-            currentIterationCells = Iterate();
+            m_currentIterationCells = Iterate();
         }
 
         private List<Cell> Iterate()
         {
             var newCells = new List<Cell>();
 
-            for (int i = 0; i < currentIterationCells.Count; i++)
+            for (int i = 0; i < m_currentIterationCells.Count; i++)
             {
-                var cell = currentIterationCells[i];
-                remainingCells.Remove(cell);
-                var availablePassages = passages.Where(p => p.Cells.Contains(cell)).ToList();
+                var cell = m_currentIterationCells[i];
+                m_remainingCells.Remove(cell);
+                var availablePassages = m_passages.Where(p => p.Cells.Contains(cell)).ToList();
                 if (availablePassages.Count == 0)
                 {
                     continue;
                 }
 
-                availablePassages = availablePassages.Where(x => remainingCells.Contains(x.Cells.First(x => x != cell))).ToList();
+                availablePassages = availablePassages.Where(x => m_remainingCells.Contains(x.Cells.First(x => x != cell))).ToList();
                 availablePassages = availablePassages.Where(x => !newCells.Contains(x.Cells.First(x => x != cell))).ToList();
 
                 newCells.AddRange(availablePassages.Select(x => x.Cells.First(x => x != cell)).ToList());
