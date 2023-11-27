@@ -1,15 +1,23 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 namespace MazeEsacpe.UI
 {
     public class GameEndCanvas : CanvasBase
     {
-        public override void Hide()
+        [SerializeField] private Button m_nextLevelButton;
+
+        protected override void Awake()
         {
-            gameObject.SetActive(false);
+            m_nextLevelButton.onClick.AddListener(OnNextLevelButtonClicked);
+
+            base.Awake();
         }
 
-        public override void Show()
+        private void OnNextLevelButtonClicked()
         {
-            gameObject.SetActive(true);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

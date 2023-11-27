@@ -24,7 +24,7 @@ namespace MazeEscape.MazeGenerator
         }
 
         [ContextMenu("Generate Maze")]
-        private void GenerateMaze()
+        public void GenerateMaze()
         {
             ClearMaze();
 
