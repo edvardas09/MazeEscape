@@ -11,6 +11,11 @@ namespace MazeEscape.UI
         public override void Initialize()
         {
             var player = FindObjectOfType<Player>();
+            if (player == null)
+            {
+                return;
+            }
+
             player.OnHealthChanged += UpdateHealthBar;
         }
 

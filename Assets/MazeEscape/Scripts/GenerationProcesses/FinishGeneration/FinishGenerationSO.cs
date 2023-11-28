@@ -56,7 +56,7 @@ namespace MazeEscape.GenerationProcesses
 
             foreach (var cell in m_finishCells)
             {
-                Gizmos.DrawCube(new Vector3(cell.Coords.x, 0, cell.Coords.y), new Vector3(1, 1, 1));
+                Gizmos.DrawWireCube(new Vector3(cell.Coords.x, 0, cell.Coords.y), new Vector3(10, 10, 10));
             }
         }
 

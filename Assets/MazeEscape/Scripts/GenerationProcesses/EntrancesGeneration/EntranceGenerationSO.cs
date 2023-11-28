@@ -50,7 +50,7 @@ namespace MazeEscape.GenerationProcesses
                 return;
             }
 
-            Gizmos.color = new Color(1, 0, 0, 0.5f);
+            Gizmos.color = new Color(1, 0, 0);
             foreach (var passage in m_passages)
             {
                 var entranceCell = passage.Cells[0];

@@ -18,8 +18,11 @@ namespace MazeEscape.UI
 
         public override void Initialize()
         {
-            var gameEndObject = FindObjectOfType<GameEndObject>();
-            gameEndObject.OnGameEnd += Show;
+            var gameEndObject = FindObjectsOfType<GameEndObject>();
+            foreach (var gameEnd in gameEndObject)
+            {
+                gameEnd.OnGameEnd += Show;
+            }
         }
 
         private void OnNextLevelButtonClicked()
