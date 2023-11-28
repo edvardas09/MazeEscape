@@ -42,7 +42,7 @@ namespace MazeEscape.Input
 
         private void UpdateMovement()
         {
-            var movementVector = GetMovementVector();
+            var movementVector = Application.isMobilePlatform ? GetStickMovementVector() : GetMovementVector();
             movementVector = Quaternion.Euler(0, 0, 45) * movementVector;
 
             m_movement.Move(movementVector);
@@ -51,6 +51,11 @@ namespace MazeEscape.Input
         private Vector2 GetMovementVector()
         {
             return m_moveAction.ReadValue<Vector2>();
+        }
+
+        private Vector2 GetStickMovementVector()
+        {
+            return Gamepad.current.leftStick.ReadValue();
         }
     }
 }
