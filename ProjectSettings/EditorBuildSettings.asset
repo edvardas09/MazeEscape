@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MazeEscape/Scenes/SquareMaze.unity
     guid: 245d99fab3db03e4db1535497716f067
+  - enabled: 0
+    path: Assets/MazeEscape/Scenes/ImageMaze.unity
+    guid: 218d1450407d19f489dd59f0196fdcf3
+  - enabled: 0
+    path: Assets/MazeEscape/Scenes/RandomMaze.unity
+    guid: a265e3934ecc9c34aa83aa7418858ed7
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000,
       guid: 2fe5d3d3561d3474dba82b359f7a98e4, type: 2}
