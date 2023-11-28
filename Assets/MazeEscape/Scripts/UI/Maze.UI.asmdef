@@ -1,0 +1,17 @@
+{
+    "name": "Maze.UI",
+    "rootNamespace": "",
+    "references": [
+        "GUID:6e4e93123478bc1499f2d1e1ebd844ce",
+        "GUID:563d388a2cf51a64389a81eafc457d12"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
