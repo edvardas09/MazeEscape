@@ -51,7 +51,7 @@ namespace MazeEscape.Gameplay.State
                 return;
             }
 
-            m_ownerStateMachine.SetState<Chasing>();
+            m_ownerStateMachine.SetState<Alert>();
 
             var path = new NavMeshPath();
             m_agent.CalculatePath(targetPosition, path);

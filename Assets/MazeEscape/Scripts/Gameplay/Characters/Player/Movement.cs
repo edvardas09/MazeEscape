@@ -37,11 +37,14 @@ namespace MazeEscape.Gameplay.Characters
             m_direction = direction;
         }
 
-        // hacky way to stop the player from clipping
-
         private void Update()
         {
-            var smoothRotation = Quaternion.Lerp(m_animator.transform.localRotation, m_rotation, Time.deltaTime * 10);
+            // Quaternion.Lerp is not working properly when deltaTime is equal or greater than 1
+            var deltaTime = Mathf.Min(Time.deltaTime * 10, 0.9f);
+
+            var smoothRotation = Quaternion.Lerp(m_animator.transform.localRotation, m_rotation, deltaTime);
+
+            // hacky way to stop the ik player animation from clipping through floor
             m_animator.transform.SetLocalPositionAndRotation(Vector3.zero, smoothRotation);
         }
     }

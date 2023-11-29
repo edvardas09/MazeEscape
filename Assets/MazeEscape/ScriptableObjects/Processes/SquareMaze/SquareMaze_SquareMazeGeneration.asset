@@ -12,22 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1da914fa92a335b4898f729f46870805, type: 3}
   m_Name: SquareMaze_SquareMazeGeneration
   m_EditorClassIdentifier: 
-  m_width: 4
-  m_height: 4
+  m_width: 2
+  m_height: 2
   m_cells:
   - Coords: {x: 0, y: 0}
   - Coords: {x: 0, y: 1}
-  - Coords: {x: 0, y: 2}
-  - Coords: {x: 0, y: 3}
   - Coords: {x: 1, y: 0}
   - Coords: {x: 1, y: 1}
-  - Coords: {x: 1, y: 2}
-  - Coords: {x: 1, y: 3}
-  - Coords: {x: 2, y: 0}
-  - Coords: {x: 2, y: 1}
-  - Coords: {x: 2, y: 2}
-  - Coords: {x: 2, y: 3}
-  - Coords: {x: 3, y: 0}
-  - Coords: {x: 3, y: 1}
-  - Coords: {x: 3, y: 2}
-  - Coords: {x: 3, y: 3}

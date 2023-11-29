@@ -45,7 +45,7 @@ namespace MazeEscape.Gameplay.Characters
 
         private void OnStateChange()
         {
-            if (m_stateMachine.CurrentState is Chasing)
+            if (m_stateMachine.CurrentState is Chasing || m_stateMachine.CurrentState is Alert)
             {
                 m_viewCone.Setup(m_viewDistance, m_viewAngle, m_seenColor);
             }

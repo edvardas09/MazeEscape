@@ -29,7 +29,7 @@ namespace MazeEscape.Gameplay.State
 
             if (Helper.TryGetTarget(Transform, m_ownerStateMachine, out var _))
             {
-                m_ownerStateMachine.SetState<Chasing>();
+                m_ownerStateMachine.SetState<Alert>();
             }
 
             if (Time.time - m_startTime > c_confusedTime)
